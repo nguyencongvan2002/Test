@@ -1,0 +1,28 @@
+﻿@model  IEnumerable<Symphony_Limited.Models.Field>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome</h1>
+    <p class="lead">Symphony Limited is where you can learn the skill you need for programing</p>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <h1 class="panel panel-heading">@Html.DisplayFor(modelItem => item.FieldName)</h1>
+        <h5>@Html.DisplayFor(modelItem => item.FieldDescription)</h5>
+
+        <div class="row">
+            @foreach (var subItem in item.Courses)
+            {
+                <div class="col-md-3 thumnail">
+                    <img src="~/Uploads/@subItem.CourseImage" />
+                    <h3>@Html.DisplayFor(modelItem => subItem.CourseTitle)</h3>
+                    <h5>@Html.DisplayFor(modelItem => subItem.CourseContent)</h5>
+                </div>
+            }
+        </div>
+    </div> 
+}
